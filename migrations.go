@@ -430,9 +430,7 @@ func createMigrationFile(filename, funcName, templateString string) (string, err
 		return "", fmt.Errorf("Failed to populate migration template %v", err)
 	}
 
-	templateString = buf.String()
-
-	return filePath, ioutil.WriteFile(filePath, []byte(templateString), 0644)
+	return filePath, ioutil.WriteFile(filePath, buf.Bytes(), 0644)
 }
 
 var migrationTemplate = `package main
